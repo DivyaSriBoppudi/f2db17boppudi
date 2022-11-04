@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{"candy_name":"Candy corn", "candy_flavor":"marshmallow", "candy_cost":16.60},{"candy_name":"Smarties", "candy_flavor":"Pineapple", "candy_cost":19.50},{"candy_name":"Tootsie Rolls", "candy_flavor":"chocolate", "candy_cost":10}];
+  div.container-fluid
+    div.row
+      each item,index in results
+        div.col-sm-2(onClick=`buy(${index})`) Candy Name: #{item.candy_name},#[br] Candy Flavor: #{item.candy_flavor},#[br] Candy Cost: #{item.candy_cost}
+  script. 
+    function buy(index) {
+      alert(`You purchased item ${index+1}`);
+    }
+  

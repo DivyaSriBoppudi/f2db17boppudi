@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Rows: #{query.rows}, Columns: #{query.cols}
+  - var rows=Number(query.rows);
+  - var cols=Number(query.cols);
+  if !Number.isInteger(rows)
+    p Given row value is not an integer. Please enter the valid value
+  else if !Number.isInteger(cols)
+    p Given columns value is not an integer. Please enter the valid value
+  else if rows<1||rows>10
+    p Enter the row value between 1 and 10.  
+  else if cols<1||cols>10
+    p Enter the column value between 1 and 10. 
+  else
+    table#outer
+      - for(let i=0; i<rows; i++) {
+        tr#middle
+          - for(let j=0; j<cols; j++) {
+            td= 1 + i + j * rows
+          - }
+      - }
+  
