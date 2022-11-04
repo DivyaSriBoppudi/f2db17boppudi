@@ -2,7 +2,7 @@
 
 ### Divya sri Boppudi
 
-Remote Render Server: <https://f2wb17boppudi.onrender.com>
+Remote Render Server: <https://f2db17boppudi.onrender.com>
 
 Candies
 - candy_name (string)
