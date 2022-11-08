@@ -1,8 +1,15 @@
 var Candy = require('../models/candy'); 
- 
-// List of all Candy 
-exports.candy_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Candy list'); 
+
+// List of all Candies 
+exports.candy_list = async function(req, res) { 
+    try{ 
+        theCandies = await Candy.find(); 
+        res.send(theCandies); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific Candy. 
