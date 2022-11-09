@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'); 
+const candy_controlers= require('../controllers/candy'); 
+var router = express.Router(); 
+ 
+/* GET costumes */ 
+router.get('/', candy_controlers.candy_view_all_Page ); 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('candies', { title: 'Search Results Candies' });
-});
-
-module.exports = router;
+module.exports = router; 

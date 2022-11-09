@@ -31,3 +31,16 @@ exports.candy_delete = function(req, res) {
 exports.candy_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: Candy update PUT' + req.params.id); 
 };
+
+// VIEWS 
+// Handle a show all view 
+exports.candy_view_all_Page = async function(req, res) { 
+    try{ 
+        theCandies = await Candy.find(); 
+        res.render('candies', { title: 'Candy Search Results', results: theCandies }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 

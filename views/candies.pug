@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"candy_name":"Candy corn", "candy_flavor":"marshmallow", "candy_cost":16.60},{"candy_name":"Smarties", "candy_flavor":"Pineapple", "candy_cost":19.50},{"candy_name":"Tootsie Rolls", "candy_flavor":"chocolate", "candy_cost":10}];
+  //- - var results = [{"candy_name":"Candy corn", "candy_flavor":"marshmallow", "candy_cost":16.60},{"candy_name":"Smarties", "candy_flavor":"Pineapple", "candy_cost":19.50},{"candy_name":"Tootsie Rolls", "candy_flavor":"chocolate", "candy_cost":10}];
+  - var results= results
   div.container-fluid
     div.row
       each item,index in results
