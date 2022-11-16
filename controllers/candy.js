@@ -46,8 +46,16 @@ exports.candy_create_post = async function(req, res) {
 }; 
  
 // Handle Candy delete form on DELETE. 
-exports.candy_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Candy delete DELETE ' + req.params.id); 
+exports.candy_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Candy.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 // Handle Candy update form on PUT. 
