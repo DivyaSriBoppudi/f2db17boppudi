@@ -11,4 +11,7 @@ router.get('/detail', candy_controlers.candy_view_one_Page);
 /* GET create candy page */ 
 router.get('/create', candy_controlers.candy_create_Page); 
 
+/* GET create update page */ 
+router.get('/update', candy_controlers.candy_update_Page);
+
 module.exports = router; 

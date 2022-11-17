@@ -1,0 +1,42 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  - let candyid = toShow._id 
+  - let candy_name = toShow.candy_name 
+  - let candy_flavor = toShow.candy_flavor 
+  - let candy_cost = toShow.candy_cost
+
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{candyid} 
+  - let actionid = "/resource/candies/" + candyid  
+  form(id='CandyForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.candyAttr(for='candy_name') Candy name 
+        input#candy_name(type='text', name='candy_name', value=candy_name) 
+    div.form-group 
+        label.candyAttr(for='candy_flavor') Candy flavor 
+        input#candy_flavor(type='text', name='candy_flavor', value=candy_flavor) 
+    div.form-group 
+        label.candyAttr(for='candy_cost') Candy cost 
+        input#candy_cost(type='decimal', name='candy_cost', value=candy_cost) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['CandyForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
