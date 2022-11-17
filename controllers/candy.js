@@ -94,7 +94,7 @@ exports.candy_view_all_Page = async function(req, res) {
     console.log("single view for id "  + req.query.id) 
     try{ 
         result = await Candy.findById( req.query.id) 
-        res.render('candydetail',  
+        res.render('candyDetail',  
 { title: 'Candy Detail', toShow: result }); 
     } 
     catch(err){ 
