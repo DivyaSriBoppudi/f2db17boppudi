@@ -88,3 +88,17 @@ exports.candy_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 };
+
+ // Handle a show one view with id specified by query 
+ exports.candy_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await Candy.findById( req.query.id) 
+        res.render('candydetail',  
+{ title: 'Candy Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

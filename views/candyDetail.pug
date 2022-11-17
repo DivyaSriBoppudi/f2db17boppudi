@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+  h1= title 
+ 
+  - let candyid = toShow._id 
+  - let candy_name = toShow.candy_name 
+  - let candy_flavor = toShow.candy_flavor 
+  - let candy_cost = toShow.candy_cost 
+  div 
+    div.row 
+      div(class='candyAttr mr-3') Candy ID is: 
+      div #{candyid} 
+    div.row 
+      div(class='candyAttr mr-3') Candy Name is: 
+      div #{candy_name} 
+    div.row 
+      div(class='candyAttr mr-3') Candy Flavor is: 
+      div #{candy_flavor} 
+    div.row 
+      div(class='candyAttr mr-3') Candy Cost is: 
+      div #{candy_cost} 
