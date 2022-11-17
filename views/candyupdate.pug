@@ -6,9 +6,9 @@ block content
     h2 No instance to update
   else
    - let candyid = toShow._id 
-   - let candyName = toShow.candy_name 
-   - let candyFlavor = toShow.candy_flavor 
-   - let candyCost = toShow.candy_cost 
+   - let candy_name = toShow.candy_name 
+   - let candy_flavor = toShow.candy_flavor 
+   - let candy_cost = toShow.candy_cost 
    
    div.row(class='mb-2') 
      div.mr-1 ID is 
@@ -17,13 +17,13 @@ block content
    form(id='candyForm', action= actionid, method="PUT") 
      div.form-group 
          label.candyAttr(for='candyName') Candy Name 
-         input#candyName(type='text', name='candyName', value= candyName) 
+         input#candy_name(type='text', name='candyName', value= candy_name) 
      div.form-group 
          label.candyAttr(for='candyFlavor') Candy Flavor 
-         input#candyFlavor(type='text', name='candyFlavor', value= candyFlavor ) 
+         input#candy_flavor(type='text', name='candyFlavor', value= candy_flavor ) 
      div.form-group 
          label.candyAttr(for='candyCost') Candy cost 
-         input#candyCost(type='decimal', name='candyCost', value= candyCost) 
+         input#candy_cost(type='decimal', name='candyCost', value= candy_cost) 
      input(type="submit") 
  
    script. 
