@@ -1,0 +1,34 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='CandyForm', action="/resource/candies", method="POST") 
+    div.form-group 
+        label.candyAttr(for='candy_name') Candy name 
+        input#candy_name(type='text', name='candy_name') 
+    div.form-group 
+        label.candyAttr(for='candy_flavor') Candy flavor 
+        input#candy_flavor(type='text', name='candy_flavor') 
+    div.form-group 
+        label.candyAttr(for='candy_cost') Candy cost 
+        input#candy_cost(type='decimal', name='candy_cost') 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['CandyForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 
