@@ -3,14 +3,14 @@ extends layout
 block content 
   h1= title
 
-  if(toShow==null)
+  if toShow==null
     h2 No instance to delete
   else
-  - let candyid = toShow._id 
-  - let candy_name = toShow.candy_name 
-  - let candy_flavor = toShow.candy_flavor 
-  - let candy_cost = toShow.candy_cost
-  - let actionid = "/resource/candies/" + candyid
+    - let candyid = toShow._id 
+    - let candy_name = toShow.candy_name 
+    - let candy_flavor = toShow.candy_flavor 
+    - let candy_cost = toShow.candy_cost
+    - let actionid = "/resource/candies/" + candyid
   script let actionid="#{actionid}"
   div
   div.row
