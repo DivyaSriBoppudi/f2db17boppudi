@@ -2,10 +2,14 @@ extends layout
  
 block content 
   h1= title 
-  - let candyid = toShow._id 
-  - let candy_name = toShow.candy_name 
-  - let candy_flavor = toShow.candy_flavor 
-  - let candy_cost = toShow.candy_cost
+
+  if toShow==null
+    h2 No instance to update
+  else
+    - let candyid = toShow._id 
+    - let candy_name = toShow.candy_name 
+    - let candy_flavor = toShow.candy_flavor 
+    - let candy_cost = toShow.candy_cost
 
   div.row(class='mb-2') 
     div.mr-1 ID is 
