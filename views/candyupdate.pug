@@ -1,46 +1,45 @@
-extends layout 
- 
+extends layout
+
 block content 
   h1= title 
-
-  if toShow==null
+  if (toShow == null) 
     h2 No instance to update
   else
-  - let candyid = toShow._id 
-  - let candy_name = toShow.candy_name 
-  - let candy_flavor = toShow.candy_flavor 
-  - let candy_cost = toShow.candy_cost
-
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{candyid} 
-  - let actionid = "/resource/candies/" + candyid  
-  form(id='CandyForm', action=actionid, method="PUT") 
-    div.form-group 
-        label.candyAttr(for='candy_name') Candy name 
-        input#candy_name(type='text', name='candy_name', value=candy_name) 
-    div.form-group 
-        label.candyAttr(for='candy_flavor') Candy flavor 
-        input#candy_flavor(type='text', name='candy_flavor', value=candy_flavor) 
-    div.form-group 
-        label.candyAttr(for='candy_cost') Candy cost 
-        input#candy_cost(type='decimal', name='candy_cost', value=candy_cost) 
-    input(type="submit") 
+   - let candyid = toShow._id 
+   - let candyName = toShow.candy_name 
+   - let candyFlavor = toShow.candy_flavor 
+   - let candyCost = toShow.candy_cost 
+   
+   div.row(class='mb-2') 
+     div.mr-1 ID is 
+     div #{candyid} 
+   - let actionid = "/resource/candies/" + candyid
+   form(id='candyForm', action= actionid, method="PUT") 
+     div.form-group 
+         label.candyAttr(for='candyName') Candy Name 
+         input#candyName(type='text', name='candyName', value= candyName) 
+     div.form-group 
+         label.candyAttr(for='candyFlavor') Candy Flavor 
+         input#candyFlavor(type='text', name='candyFlavor', value= candyFlavor ) 
+     div.form-group 
+         label.candyAttr(for='candyCost') Candy cost 
+         input#candyCost(type='decimal', name='candyCost', value= candyCost) 
+     input(type="submit") 
  
-  script. 
-    document.forms['CandyForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
+   script. 
+     document.forms['candyForm'].addEventListener('submit', (event) => { 
+     event.preventDefault(); 
+       // TODO do something here to show user that form is being submitted 
+       fetch(event.target.action, { 
+         method: 'PUT', 
+         body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+       }).then((resp) => { 
+         return resp.json(); // or resp.text() or whatever the server sends 
+       }).then((body) => { 
+         alert("Update succeded") 
+         // TODO handle body 
+       }).catch((error) => { 
         // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
-    }); 
+         alert("update failed " + error ) 
+       }); 
+     });
