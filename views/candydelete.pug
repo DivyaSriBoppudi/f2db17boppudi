@@ -32,19 +32,19 @@ block content
   script. 
     function cancel() { 
       // Go back to the home page for the room collection 
-      window.location.href='/rooms' 
+      window.location.href='/candies' 
     } 
   script. 
     function deleteOnid() { 
       console.log("starting delete") 
       // delete first 
       fetch(actionid, { 
-        method: 'DELETE'      // Don't need a body for the delete 
+        method: 'DELETE'
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
         alert("Delete succeded") 
-        window.location.href='/rooms' 
+        window.location.href='/candies' 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
