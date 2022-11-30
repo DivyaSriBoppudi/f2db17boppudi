@@ -2,6 +2,7 @@ extends layout
 
 block content
   h1= title
+  button.btn(class="btn-success ml-1", onClick = `dispatch(\"/candies/create")`) Create
   //- - var results = [{"candy_name":"Candy corn", "candy_flavor":"marshmallow", "candy_cost":16.60},{"candy_name":"Smarties", "candy_flavor":"Pineapple", "candy_cost":19.50},{"candy_name":"Tootsie Rolls", "candy_flavor":"chocolate", "candy_cost":10}];
   - var results= results
   div.container-fluid
@@ -9,7 +10,9 @@ block content
       each item,index in results
         - let destination = `dispatch(\"/candies/update?id=${item._id}\")`
         div.row-sm-2(class="m-1") Item #{item.candy_name} (#{item.candy_flavor}) is #{item.candy_cost}
-          button.btn(class="btn-primary ml-1", onClick= destination) Update 
+          button.btn(class="btn-warning ml-1 rg-4", onClick= destination) Update 
+          button.btn(class="btn-info ml-1", onClick= `dispatch(\"/candies/detail?id=${item._id}\")`) Detail 
+          button.btn(class="btn-danger ml-1", onClick= `dispatch(\"/candies/delete?id=${item._id}\")`) Delete 
   script. 
     function buy(index) {
       alert(`You purchased item ${index+1}`);

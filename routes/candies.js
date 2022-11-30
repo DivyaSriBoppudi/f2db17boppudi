@@ -19,12 +19,12 @@ router.get('/', candy_controlers.candy_view_all_Page );
 router.get('/detail', candy_controlers.candy_view_one_Page); 
 
 /* GET create candy page */ 
-router.get('/create', candy_controlers.candy_create_Page); 
+router.get('/create', secured, candy_controlers.candy_create_Page); 
 
 /* GET create update page */ 
 router.get('/update',secured, candy_controlers.candy_update_Page);
 
 /* GET delete candy page */ 
-router.get('/delete', candy_controlers.candy_delete_Page); 
+router.get('/delete', secured, candy_controlers.candy_delete_Page); 
 
 module.exports = router; 
